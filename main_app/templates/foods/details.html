@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Food Details</h1>
+
+<div class="card">
+  <div class="card-content">
+    <span class="card-title">{{ food.name }}</span>
+    <p>Location: {{ food.location }}</p>
+    <p>City: {{ food.city }}</p>
+    <p>Comments: {{ food.comments }}</p>
+    <p>Rating: {{ food.rating }}</p>
+  </div>
+</div>
+
+{% endblock %}
