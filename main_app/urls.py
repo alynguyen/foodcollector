@@ -11,5 +11,6 @@ urlpatterns = [
    path('foods/<int:pk>/delete/', views.FoodDelete.as_view(), name='food_delete'),
    path('foods/<int:food_id>/add_review/', views.add_review, name='add_review'),
    path('foods/<int:food_id>/delete_review/', views.delete_review, name='delete_review'),
-   path('foods/<int:pk>/delete/', views.ReviewDelete.as_view(), name='review_delete'),
+   path('foods/<int:food_id>/add_photo/', views.add_photo, name='add_photo'),
+   path('categories/create/', views.CategoryCreate.as_view(), name='category_create'),
 ]

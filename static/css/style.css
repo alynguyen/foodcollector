@@ -13,3 +13,8 @@ footer {
   text-align: right;
   background-color: lightgrey;
 }
+
+.responsive-img {
+  transform: rotate(90deg);
+  border-color: black;
+}
