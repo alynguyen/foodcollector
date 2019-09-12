@@ -27,6 +27,14 @@ class CategoryCreate(CreateView):
   model = Category
   fields = '__all__'
 
+def assoc_toy(request, food_id, category_id):
+  Food.objects.get(id=food_id).categories.add(category_id)
+  return redirect('details', food_id=food_id)
+
+def unassoc_toy(rquest, food_id, category_id):
+  Food.objects.get(id=food_id).categories.remove(category_id)
+  return redirect('details', food_id=food_id)
+
 def add_photo(request, food_id):
     photo_file = request.FILES.get('photo-file', None)
     if photo_file:
@@ -65,6 +73,10 @@ def food_index(request):
 
 def food_details(request, food_id):
   food = Food.objects.get(id=food_id)
+  categories_dont = Category.objects.exclude(id__in = food.categories.all().values_list('id'))
   review_form = ReviewForm()
-  return render(request, 'foods/details.html', {'food': food, 'review_form': review_form})
-  
+  return render(request, 'foods/details.html', {
+    'food': food, 
+    'review_form': review_form,
+    'categories': categories_dont,
+    })

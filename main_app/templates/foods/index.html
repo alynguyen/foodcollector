@@ -5,8 +5,13 @@
 
 {% for food in foods %}
 <a href="{% url 'details' food.id %}">
-  <div class="card">
+  <div class="card horizontal">
     <div class="card-content">
+        {% for photo in food.photo_set.all %}
+        <img class="responsive-img" src="{{photo.url}}">
+        {% empty %}
+        <div class="card-panel teal-text center-align">No Photos Uploaded</div>
+        {% endfor %}
       <span class="card-title">{{ food.name }}</span>
       <p>Location: {{ food.location }}</p>
       <p>Comments: {{ food.comments }}</p>
