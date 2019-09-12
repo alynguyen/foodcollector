@@ -13,7 +13,7 @@ BUCKET = 'foodcollect'
 
 class FoodCreate(CreateView):
   model = Food
-  fields = '__all__'
+  fields = ['name', 'location', 'city', 'comments', 'rating']
 
 class FoodDelete(DeleteView):
   model = Food

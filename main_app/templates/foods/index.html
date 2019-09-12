@@ -1,21 +1,28 @@
 {% extends 'base.html' %}
 {% block content %}
+{% load static %}
 
-<h1>Food List</h1>
+<h1>Food List</h1 >
 
 {% for food in foods %}
 <a href="{% url 'details' food.id %}">
-  <div class="card horizontal">
+  <div class="card horizontal hoverable">
+    {% for photo in food.photo_set.all %}
+    <div class="card-image card-content">
+      <img class="responsive-img" src="{{photo.url}}">
+    </div>
+    {% empty %}
+    <div class="card-image card-content">
+        <img class="responsive-img" src="{% static 'img/food.png' %}" alt="No Image Uploaded">
+    </div>
+    {% endfor %}
     <div class="card-content">
-        {% for photo in food.photo_set.all %}
-        <img class="responsive-img" src="{{photo.url}}">
-        {% empty %}
-        <div class="card-panel teal-text center-align">No Photos Uploaded</div>
-        {% endfor %}
-      <span class="card-title">{{ food.name }}</span>
-      <p>Location: {{ food.location }}</p>
-      <p>Comments: {{ food.comments }}</p>
-      <p>Rating: {{ food.rating }}</p>
+      <div class="card-stacked">
+        <span class="card-title">{{ food.name }}</span>
+        <p>Location: {{ food.location }}</p>
+        <p>Comments: {{ food.comments }}</p>
+        <p>Rating: {{ food.rating }}</p>
+      </div>
     </div>
   </div>
 </a>
