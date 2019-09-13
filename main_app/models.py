@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
 
 class Category(models.Model):
@@ -19,6 +20,7 @@ class Food(models.Model):
   comments = models.CharField(max_length=250)
   rating = models.IntegerField()
   categories = models.ManyToManyField(Category)
+  user = models.ForeignKey(User, on_delete=models.CASCADE)
 
   def get_absolute_url(self):
     return reverse('details', kwargs={'food_id': self.id})

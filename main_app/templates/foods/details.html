@@ -45,7 +45,7 @@
               <td>{{reviews.review}}</td>
               <td>{{reviews.rating}}</td>
               <td>
-                <form action="{% url 'delete_review' reviews.id %}" method="post">
+                <form action="{% url 'delete_reviews' reviews.id %}" method="post">
                 {% csrf_token %}
                 <input type="submit" class="btn" value="X">
                 </form>
