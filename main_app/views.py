@@ -41,7 +41,6 @@ class ReviewDelete(LoginRequiredMixin, DeleteView):
   def get_success_url(self):
         return reverse_lazy('details', kwargs={'food_id': self.object.food_id})
 
-@login_required
 def signup(request):
   error_message = ''
   if request.method == 'POST':

@@ -3,6 +3,9 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
 
+class Profile(models.Model):
+  user = models.OneToOneField
+
 class Category(models.Model):
   name = models.CharField(max_length=20)
   description = models.CharField(max_length=100)
@@ -16,7 +19,7 @@ class Category(models.Model):
 class Food(models.Model):
   name = models.CharField(max_length=100)
   location = models.CharField(max_length=100)
-  city = models.CharField(max_length=100)
+  city = models.CharField(max_length=100)``
   comments = models.CharField(max_length=250)
   rating = models.IntegerField()
   categories = models.ManyToManyField(Category)
